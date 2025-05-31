@@ -14,8 +14,6 @@ from pybit.unified_trading import HTTP as BybitHTTP
 
 # Constants
 _WS_PUBLIC_ENDPOINT = "wss://stream.bybit.com/v5/public/linear"
-_HTTP_ENDPOINT = "https://api.bybit.com"
-_TESTNET_HTTP_ENDPOINT = "https://api-testnet.bybit.com"
 _SYMBOL_SUFFIX = "USDT"
 
 logger = logging.getLogger(__name__)
@@ -34,7 +32,7 @@ class Exchange:
         self._http = BybitHTTP(
             api_key=api_key,
             api_secret=api_secret,
-            endpoint=_TESTNET_HTTP_ENDPOINT if testnet else _HTTP_ENDPOINT,
+            testnet=testnet,
         )
         self._session = session or aiohttp.ClientSession()
         self._ws: aiohttp.ClientWebSocketResponse | None = None
