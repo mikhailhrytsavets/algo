@@ -4,10 +4,21 @@ from __future__ import annotations
 import asyncio
 import logging
 
-from telegram import Bot
-
 logger = logging.getLogger(__name__)
 
+try:
+    from telegram import Bot  # type: ignore
+except Exception:  # pragma: no cover - optional dependency
+    class Bot:
+        """Fallback bot when python-telegram-bot is missing."""
+
+        def __init__(self, *_, **__):
+            logger.warning(
+                "python-telegram-bot not installed; Telegram notifications disabled"
+            )
+
+        async def send_message(self, chat_id: str, text: str) -> None:  # noqa: D401
+            logger.info("[MOCK TG] %s: %s", chat_id, text)
 
 class TelegramNotifier:
     def __init__(self, token: str, chat_id: str) -> None:

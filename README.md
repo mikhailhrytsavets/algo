@@ -9,6 +9,9 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
+# Telegram support is optional. If `python-telegram-bot` isn't installed,
+# notifications will be printed to the console.
+
 # Copy config & edit keys
 cp settings.toml.example settings.toml
 vim settings.toml
