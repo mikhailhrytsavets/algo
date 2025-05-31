@@ -1,0 +1,35 @@
+[bybit]
+api_key = "YOUR_API_KEY"
+api_secret = "YOUR_API_SECRET"
+testnet = true
+
+[telegram]
+bot_token = "YOUR_BOT_TOKEN"
+chat_id = "YOUR_CHAT_ID"
+
+[symbols]
+# List of pairs to trade
+symbols = [
+  "BTCUSDT",
+  "ETHUSDT",
+  "SOLUSDT",
+  "BNBUSDT",
+  "XRPUSDT",
+  "ADAUSDT",
+  "DOGEUSDT",
+  "AVAXUSDT",
+  "LINKUSDT",
+  "DOTUSDT",
+]
+
+[trading]
+leverage = 10
+risk_per_trade = 0.01  # 1 %
+qty_step = 0.001
+
+[risk_guard]
+daily_drawdown = -5.0      # %
+profit_lock = 5.0          # %
+max_trades = 20
+max_positions = 8
+max_total_risk = 0.10      # 10 %
